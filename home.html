@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Startup Research Connection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0B1622',
+                        'accent-blue': '#2A9FD6'
+                    },
+                    fontFamily: {
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .geometric-pattern {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f7ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .geometric-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0L60 30L30 60L0 30L30 0Z' fill='%232A9FD6' fill-opacity='0.1'/%3E%3C/svg%3E");
+            background-size: 100px 100px;
+            animation: patternMove 20s linear infinite;
+            opacity: 0.5;
+        }
+        @keyframes patternMove {
+            0% { transform: translateX(0) translateY(0); }
+            100% { transform: translateX(100px) translateY(100px); }
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(42, 159, 214, 0.2);
+        }
+    </style>
+</head>
+<body class="geometric-pattern min-h-screen font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-sm fixed w-full z-50 shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <button class="lg:hidden text-navy">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <a href="#" class="text-navy hover:text-accent-blue transition">How it works</a>
+                    <a href="#" class="text-accent-blue font-semibold">Home</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-navy hover:text-accent-blue transition">SIGNUP</a>
+                    <a href="#" class="text-navy hover:text-accent-blue transition">LOGIN</a>
+                    <a href="#" class="text-navy hover:text-accent-blue transition">ABOUT US</a>
+                    <a href="#" class="text-navy hover:text-accent-blue transition">HELP</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+```html
+<!-- Responsive Navigation Menu -->
+<div class="lg:hidden fixed top-0 left-0 w-full h-screen bg-white/90 backdrop-blur-sm z-50 shadow-sm" id="mobile-nav">
+    <div class="container mx-auto px-4 py-8">
+        <div class="flex justify-between items-center">
+            <a href="#" class="text-navy hover:text-accent-blue transition">How it works</a>
+            <button class="text-navy" id="close-mobile-nav">
+                <i class="fas fa-times text-2xl"></i>
+            </button>
+        </div>
+        <ul class="mt-8">
+            <li class="py-4">
+                <a href="#" class="text-navy hover:text-accent-blue transition">SIGNUP</a>
+            </li>
+            <li class="py-4">
+                <a href="#" class="text-navy hover:text-accent-blue transition">LOGIN</a>
+            </li>
+            <li class="py-4">
+                <a href="#" class="text-navy hover:text-accent-blue transition">ABOUT US</a>
+            </li>
+            <li class="py-4">
+                <a href="#" class="text-navy hover:text-accent-blue transition">HELP</a>
+            </li>
+        </ul>
+    </div>
+</div>
+
+<!-- Script to toggle mobile navigation -->
+<script>
+    const mobileNav = document.getElementById('mobile-nav');
+    const openMobileNav = document.querySelector('button.lg:hidden');
+    const closeMobileNav = document.getElementById('close-mobile-nav');
+
+    openMobileNav.addEventListener('click', () => {
+        mobileNav.classList.add('block');
+    });
+
+    closeMobileNav.addEventListener('click', () => {
+        mobileNav.classList.remove('block');
+    });
+</script>
+```
+    <!-- Hero Section -->
+    <header class="pt-32 pb-20 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-6xl font-bold text-navy mb-8">HOME</h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+                Welcome to the hub where innovation meets expertise. Discover opportunities, connect with researchers, and transform your ideas into reality.
+            </p>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="py-20 px-4">
+        <div class="container mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature Card 1 -->
+                <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
+                    <div class="text-accent-blue mb-4">
+                        <i class="fas fa-search text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-4">Find Experts</h3>
+                    <p class="text-gray-600">Connect with leading researchers in your field and get expert insights for your startup.</p>
+                </div>
+
+                <!-- Feature Card 2 -->
+                <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
+                    <div class="text-accent-blue mb-4">
+                        <i class="fas fa-lightbulb text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-4">Share Knowledge</h3>
+                    <p class="text-gray-600">Contribute your expertise and help shape the future of innovative startups.</p>
+                </div>
+
+                <!-- Feature Card 3 -->
+                <div class="bg-white rounded-xl p-8 shadow-sm card-hover">
+                    <div class="text-accent-blue mb-4">
+                        <i class="fas fa-rocket text-3xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-navy mb-4">Grow Together</h3>
+                    <p class="text-gray-600">Build lasting partnerships and accelerate your startup's growth journey.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-20 px-4 relative overflow-hidden">
+        <div class="container mx-auto text-center">
+            <div class="bg-navy rounded-2xl p-12 relative z-10">
+                <h2 class="text-3xl font-bold text-white mb-6">Ready to Start Your Journey?</h2>
+                <p class="text-gray-300 mb-8 max-w-2xl mx-auto">
+                    Join our community of innovators and researchers making a difference in the startup ecosystem.
+                </p>
+                <button class="bg-accent-blue hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg">
+                    Get Started Now
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white/80 backdrop-blur-sm py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-600 hover:text-accent-blue transition">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-accent-blue transition">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="text-gray-600 hover:text-accent-blue transition">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
