@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Research Connection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0B1622',
+                        'accent-blue': '#2A9FD6'
+                    },
+                    fontFamily: {
+                        'cursive': ['Dancing Script', 'cursive'],
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .circuit-pattern {
+            background-image: radial-gradient(circle at 50% 50%, rgba(42, 159, 214, 0.1) 0%, transparent 50%),
+                            linear-gradient(45deg, rgba(42, 159, 214, 0.05) 25%, transparent 25%),
+                            linear-gradient(-45deg, rgba(42, 159, 214, 0.05) 25%, transparent 25%);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        .hexagon {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            transition: all 0.3s ease;
+        }
+        .hexagon:hover {
+            transform: scale(1.1);
+            background-color: rgba(42, 159, 214, 0.4);
+        }
+        @keyframes pulse {
+            0% { background-size: 100% 100%, 20px 20px, 20px 20px; }
+            50% { background-size: 120% 120%, 22px 22px, 22px 22px; }
+            100% { background-size: 100% 100%, 20px 20px, 20px 20px; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-navy min-h-screen font-sans text-white circuit-pattern">
+    <!-- Navigation -->
+    <nav class="bg-navy/90 backdrop-blur-sm fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <button class="lg:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <a href="#" class="text-accent-blue hover:text-white transition">How it works</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">Home</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-white hover:text-accent-blue transition">SIGNUP</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">LOGIN</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">ABOUT US</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">HELP</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative min-h-screen flex items-center justify-center px-4">
+        <!-- Decorative Hexagons Left -->
+        <div class="absolute left-0 top-1/4 opacity-20">
+            <div class="grid grid-cols-3 gap-2">
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+            </div>
+        </div>
+
+        <!-- Decorative Hexagons Right -->
+        <div class="absolute right-0 bottom-1/4 opacity-20">
+            <div class="grid grid-cols-3 gap-2">
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                <div class="hexagon bg-accent-blue w-16 h-16"></div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="text-center max-w-5xl mx-auto float-animation">
+            <h1 class="font-cursive text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+                Connecting Startups with Top Researchers—Innovation Starts Here!
+            </h1>
+            <p class="text-lg md:text-xl mb-12 text-gray-300 max-w-3xl mx-auto">
+                FIND THE RIGHT EXPERTS FOR YOUR STARTUP OR OFFER YOUR KNOWLEDGE TO EMERGING BUSINESSES.
+            </p>
+            <button class="bg-accent-blue hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg relative overflow-hidden group">
+                <span class="absolute inset-0 bg-white/30 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                Explore Content!
+            </button>
+        </div>
+
+        <!-- Circuit Board Animation -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="w-full h-full" style="background: radial-gradient(circle at center, rgba(42, 159, 214, 0.1) 0%, transparent 70%)"></div>
+        </div>
+    </main>
+</body>
+</html>
