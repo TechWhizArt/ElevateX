@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat Box</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #e5ddd5;
+      margin: 0;
+      padding: 0;
+    }
+
+    .chat-container {
+      width: 400px;
+      height: 600px;
+      margin: 40px auto;
+      background: #fff;
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    }
+
+    .messages {
+      flex: 1;
+      padding: 10px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .message {
+      margin: 5px 0;
+      max-width: 80%;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #dcf8c6;
+      align-self: flex-start;
+      position: relative;
+    }
+
+    .message.sent {
+      background-color: #cce5ff;
+      align-self: flex-end;
+      border: 1px solid #3399ff;
+      box-shadow: 0 2px 5px rgba(51, 153, 255, 0.3);
+      padding: 10px;
+      border-radius: 10px;
+    }
+
+    .message span.time {
+      font-size: 10px;
+      color: gray;
+      /* Remove absolute positioning to allow spacing */
+      position: static;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .input-box {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    .input-box input {
+      flex: 1;
+      border: none;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .input-box button {
+      border: none;
+      background:  #A7D3E0;
+      color: white;
+      padding: 10px 15px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .input-box input:focus {
+      outline: none;
+    }
+  </style>
+  <style>
+    /* Nav bar styles */
+    .navbar {
+      background-color: #A7D3E0;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-family: sans-serif;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      margin-right: 20px;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    .navbar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <a href="index.html">Home</a>
+    <a href="community.html">Community</a>
+    <a href="about.html">About</a>
+  </div>
+  <div class="chat-container">
+    <div class="messages" id="messages">
+      <div class="message">nice to see u !<span class="time">1:00</span></div>
+      <div class="message sent">we would love to connect with u <span class="time">14:17</span></div>
+      
+    </div>
+    <div class="input-box">
+      <input type="text" id="messageInput" placeholder="Type a message" />
+      <button onclick="sendMessage()">Send</button>
+    </div>
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("messageInput");
+      const messageText = input.value.trim();
+      if (messageText) {
+        const messageContainer = document.getElementById("messages");
+        const newMsg = document.createElement("div");
+        newMsg.classList.add("message", "sent");
+        const now = new Date();
+        const time = now.getHours().toString().padStart(2, '0') + ":" + now.getMinutes().toString().padStart(2, '0');
+        newMsg.innerHTML = messageText + `<span class="time">${time}</span>`;
+        messageContainer.appendChild(newMsg);
+        input.value = "";
+        messageContainer.scrollTop = messageContainer.scrollHeight;
+      }
+    }
+
+    // Add event listener to send message on Enter key press
+    document.getElementById("messageInput").addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
