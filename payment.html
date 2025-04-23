@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ElevateX Payment</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        .nav-bar {
+            background-color: #A7D3E0;
+            color: #333;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-bar-title {
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .cancel-btn {
+            color: #333;
+            text-decoration: none;
+        }
+        .container {
+            padding: 16px;
+        }
+        .upi-container {
+            background-color: white;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 16px;
+        }
+        .payment-option {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .payment-option:last-child {
+            border-bottom: none;
+        }
+        .radio {
+            width: 24px;
+            height: 24px;
+            border: 2px solid #999;
+            border-radius: 50%;
+            margin-right: 16px;
+        }
+        .option-details {
+            flex-grow: 1;
+        }
+        .option-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+        .option-subtitle {
+            color: #666;
+            font-size: 14px;
+        }
+        .option-rewards {
+            color:#A7D3E0;
+            font-size: 14px;
+        }
+        .section-title {
+            color: #666;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 16px 0;
+        }
+        .add-card {
+            display: flex;
+            align-items: center;
+            color:#A7D3E0;
+            font-size: 16px;
+            padding: 16px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+        .add-icon {
+            border: 2px solid #A7D3E0;
+            color: #A7D3E0;
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 24px;
+        }
+        .logo {
+            width: 36px;
+            height: 36px;
+            background-color: #eee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+         .amazon-pay-logo {
+            background-color: #232f3e;
+            color: white;
+            font-size: 12px;
+            padding: 4px;
+        }
+        .upi-logo {
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .balance-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .add-now-btn {
+            background-color: white;
+            border: 1px solid #aaa;
+            padding: 8px 16px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .arrow-icon {
+            margin-left: 8px;
+        }
+        .bank-icon {
+            font-size: 20px;
+        }
+        .info-icon {
+            color: #0073b1;
+            font-size: 20px;
+            margin-right: 8px;
+        }
+        .unavailable {
+            color: #666;
+        }
+        .add-bank {
+            color: #0073b1;
+            font-size: 16px;
+            padding: 16px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+        }
+        .continue-btn {
+            width: 100%;
+            background-color: #ffd814;
+            border: none;
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            margin-top: 16px;
+        }
+        .collapsible {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            color: #0073b1;
+            font-size: 16px;
+            padding: 16px;
+            background-color: white;
+            border-radius: 8px;
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="nav-bar">
+        <div class="back-btn">←</div>
+        <div class="nav-bar-title">Payment Methods</div>
+    </div>
+
+    <div class="container">
+        <div class="upi-container">
+            <div class="payment-option">
+                <div class="radio"></div>
+                <div class="option-details">
+                    <div class="option-title">Pay UPI</div>
+                    <div class="option-subtitle">Setup Now</div>
+                    <div class="option-rewards">Earn rewards every time</div>
+                </div>
+                <div class="logo amazon-pay-logo">pay</div>
+            </div>
+            <div class="payment-option">
+                <div class="radio"></div>
+                <div class="option-details">
+                    <div class="option-title">Pay by any UPI App</div>
+                    <div class="option-subtitle">Google Pay, PhonePe, Paytm and more</div>
+                </div>
+                <div class="logo upi-logo">UPI</div>
+            </div>
+        </div>
+
+        <div class="section-title">CREDIT & DEBIT CARDS</div>
+        <div class="add-card">
+            <div class="add-icon">+</div>
+            <div>Add a new credit or debit card</div>
+        </div>
+
+        <div class="section-title">MORE WAYS TO PAY</div>
+        <div class="upi-container">
+            <div class="payment-option">
+                <div class="radio"></div>
+                <div class="option-details">
+                    <div class="option-title">ElevateX Pay Balance</div>
+                    <div class="balance-info">
+                        <div class="option-subtitle">Available balance: ₹0.00</div>
+                        <div class="add-now-btn">
+                            Add Now <span class="arrow-icon">→</span>
+                        </div>
+                    </div>
+                    <div class="option-subtitle">Add money to proceed</div>
+                </div>
+                <div class="logo amazon-pay-logo">pay</div>
+            </div>
+            <div class="payment-option">
+                <div class="radio"></div>
+                <div class="option-details">
+                    <div class="option-title">EMI</div>
+                    <div class="option-subtitle unavailable">Unavailable for this payment <span style="color: #0073b1;">Why?</span></div>
+                </div>
+                <div class="logo">🗒️</div>
+            </div>
+            <div class="payment-option">
+                <div class="radio"></div>
+                <div class="option-details">
+                    <div class="option-title">Net Banking</div>
+                </div>
+                <div class="logo bank-icon">🏦</div>
+            </div>
+        </div>
+
+        <div class="add-bank">
+            <div class="add-icon">+</div>
+            <div>Add bank account to receive money</div>
+        </div>
+
+        <button class="collapsible">
+            Add Gift Card or Promo Code
+            <span>▼</span>
+        </button>
+
+        <button class="continue-btn">Continue</button>
+    </div>
+</body>
+</html>
