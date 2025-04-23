@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research-Startup Connect | User Profile</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #10b981;
+            --bg-color: #e0f7fa;
+            --card-bg: #ffffff;
+            --text-dark: #1e293b;
+            --text-light: #64748b;
+            --border-color: #e2e8f0;
+            --hover-color: #dbeafe;
+            --researcher-color: #8b5cf6;
+            --startup-color: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+        
+        .navbar {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar-brand {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            background-color: var(--primary-color);
+            border-radius: 8px;
+            margin-right: 0.75rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .navbar-nav {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+        
+        .nav-link {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.25rem;
+            transition: all 0.2s ease;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background-color: var(--hover-color);
+            color: var(--primary-color);
+        }
+        
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .notification-bell {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .notification-count {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background-color: var(--secondary-color);
+            color: white;
+            font-size: 0.7rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            color: var(--primary-color);
+            cursor: pointer;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        
+        .card-header {
+            padding: 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+            font-size: 1.25rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .card-body {
+            padding: 1.25rem;
+        }
+        
+        .profile-header {
+            text-align: center;
+            padding: 2rem 1.5rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            color: white;
+            position: relative;
+        }
+        
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background-color: white;
+            margin: 0 auto 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3rem;
+            position: relative;
+            border: 4px solid white;
+        }
+        
+        .user-type-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            border: 3px solid white;
+        }
+        
+        .researcher-badge {
+            background-color: var(--researcher-color);
+            color: white;
+        }
+        
+        .startup-badge {
+            background-color: var(--startup-color);
+            color: white;
+        }
+        
+        .profile-name {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+        
+        .profile-role {
+            display: inline-block;
+            padding: 0.35rem 1rem;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 2rem;
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+        
+        .profile-email {
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            opacity: 0.9;
+        }
+        
+        .profile-stats {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        .section-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .connection-item {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .connection-item:last-child {
+            border-bottom: none;
+        }
+        
+        .connection-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #e2e8f0;
+            margin-right: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .connection-info {
+            flex: 1;
+        }
+        
+        .connection-name {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .connection-role {
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .connection-type {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .researcher-type {
+            background-color: #e0e7ff;
+            color: var(--researcher-color);
+        }
+        
+        .startup-type {
+            background-color: #fef3c7;
+            color: var(--startup-color);
+        }
+        
+        .expertise-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .tag {
+            background-color: #f1f5f9;
+            padding: 0.35rem 0.75rem;
+            border-radius: 1rem;
+            font-size: 0.8rem;
+            color: var(--text-dark);
+        }
+        
+        .activity-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .activity-item:last-child {
+            border-bottom: none;
+        }
+        
+        .activity-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 1rem;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .connect-icon {
+            background-color: #10b981;
+        }
+        
+        .project-icon {
+            background-color: #f59e0b;
+        }
+        
+        .post-icon {
+            background-color: #3b82f6;
+        }
+        
+        .activity-content {
+            flex: 1;
+        }
+        
+        .activity-title {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        
+        .activity-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .project-item {
+            padding: 1rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .project-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .project-description {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 0.75rem;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            color: var(--text-light);
+        }
+        
+        .status-badge {
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        
+        .active-status {
+            background-color: #d1fae5;
+            color: #065f46;
+        }
+        
+        .completed-status {
+            background-color: #e0e7ff;
+            color: #4338ca;
+        }
+        
+        .stats-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-card {
+            background-color: #f8fafc;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        
+        .stat-card-value {
+            font-size: 1.75rem;
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.25rem;
+        }
+        
+        .stat-card-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        
+        .tab-container {
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tabs {
+            display: flex;
+        }
+        
+        .tab {
+            padding: 0.75rem 1.25rem;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: 500;
+        }
+        
+        .tab.active {
+            border-bottom-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+        
+        .tab-content {
+            padding: 1.25rem;
+        }
+        
+        .progress-bar-container {
+            height: 8px;
+            background-color: #e2e8f0;
+            border-radius: 4px;
+            margin: 0.5rem 0 1rem;
+            overflow: hidden;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background-color: var(--secondary-color);
+        }
+        
+        /* Responsive styles */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            
+            .navbar-nav {
+                display: none;
+            }
+            
+            .mobile-menu-button {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <a href="#" class="navbar-brand">
+            <div class="logo">RS</div>
+            ConnectHub
+        </a>
+        
+        <ul class="navbar-nav">
+            <li><a href="#" class="nav-link active">Dashboard</a></li>
+            <li><a href="#" class="nav-link">Discover</a></li>
+            <li><a href="#" class="nav-link">Projects</a></li>
+            <li><a href="#" class="nav-link">Community</a></li>
+            <li><a href="#" class="nav-link">Messages</a></li>
+        </ul>
+        
+        <div class="user-menu">
+            <div class="notification-bell">
+                📬
+                <span class="notification-count">3</span>
+            </div>
+            <div class="avatar">JS</div>
+        </div>
+    </nav>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <!-- Left Column: Profile Info -->
+        <div class="left-column">
+            <!-- Profile Card -->
+            <div class="card">
+                <div class="profile-header">
+                    <div class="profile-avatar">
+                        👤
+                        <div class="user-type-badge researcher-badge">🔬</div>
+                    </div>
+                    <h1 class="profile-name">Dr. James Smith</h1>
+                    <div class="profile-role">Researcher</div>
+                    <div class="profile-email">james.smith@research.edu</div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat-item">
+                            <div class="stat-value">12</div>
+                            <div class="stat-label">Projects</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">28</div>
+                            <div class="stat-label">Connections</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-value">45</div>
+                            <div class="stat-label">Posts</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card-body">
+                    <h3 class="section-title">Past Connections</h3>
+                    <div class="connection-list">
+                        <div class="connection-item">
+                            <div class="connection-avatar">TN</div>
+                            <div class="connection-info">
+                                <div class="connection-name">TechNova</div>
+                                <div class="connection-role">AI Solutions</div>
+                            </div>
+                            <span class="connection-type startup-type">Startup</span>
+                        </div>
+                        
+                        <div class="connection-item">
+                            <div class="connection-avatar">AM</div>
+                            <div class="connection-info">
+                                <div class="connection-name">Dr. Alice Miller</div>
+                                <div class="connection-role">Stanford University</div>
+                            </div>
+                            <span class="connection-type researcher-type">Researcher</span>
+                        </div>
+                        
+                        <div class="connection-item">
+                            <div class="connection-avatar">BL</div>
+                            <div class="connection-info">
+                                <div class="connection-name">BioLabs</div>
+                                <div class="connection-role">Medical Research</div>
+                            </div>
+                            <span class="connection-type startup-type">Startup</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Expertise Card -->
+            <div class="card">
+                <div class="card-header">Expertise</div>
+                <div class="card-body">
+                    <div class="expertise-tags">
+                        <span class="tag">Machine Learning</span>
+                        <span class="tag">Data Analysis</span>
+                        <span class="tag">Neural Networks</span>
+                        <span class="tag">Computer Vision</span>
+                        <span class="tag">Research Methodology</span>
+                        <span class="tag">Python</span>
+                        <span class="tag">TensorFlow</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Right Column: Activity & Projects -->
+        <div class="right-column">
+            <!-- Activity Tracker Dashboard -->
+            <div class="card">
+                <div class="card-header">Activity Dashboard</div>
+                <div class="card-body">
+                    <div class="stats-summary">
+                        <div class="stat-card">
+                            <div class="stat-card-value">45</div>
+                            <div class="stat-card-label">Posts</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-value">28</div>
+                            <div class="stat-card-label">Connections</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-card-value">12</div>
+                            <div class="stat-card-label">Projects</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <div class="section-title">Project Completion</div>
+                        <div>Neural Network Research</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 75%"></div>
+                        </div>
+                        
+                        <div>Startup Collaboration - DataTech</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" style="width: 45%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Recent Activity -->
+            <div class="card">
+                <div class="card-header">Recent Activities</div>
+                <div class="card-body">
+                    <div class="activity-item">
+                        <div class="activity-icon connect-icon">🔗</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Connected with TechNova</div>
+                            <div class="activity-meta">
+                                <span>AI Research Collaboration</span>
+                                <span>2 hours ago</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon project-icon">📊</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Updated Neural Network Research project</div>
+                            <div class="activity-meta">
+                                <span>Added new results</span>
+                                <span>Yesterday</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="activity-item">
+                        <div class="activity-icon post-icon">📝</div>
+                        <div class="activity-content">
+                            <div class="activity-title">Posted a new research finding</div>
+                            <div class="activity-meta">
+                                <span>Machine Learning Advances</span>
+                                <span>3 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Projects Tab -->
+            <div class="card">
+                <div class="tab-container">
+                    <div class="tabs">
+                        <div class="tab active">Projects</div>
+                        <div class="tab">Publications</div>
+                        <div class="tab">Resources</div>
+                    </div>
+                </div>
+                
+                <div class="tab-content">
+                    <div class="project-item">
+                        <div class="project-title">Neural Network Research</div>
+                        <div class="project-description">Exploring advanced neural network architectures for image recognition with application in medical diagnostics.</div>
+                        <div class="project-meta">
+                            <span>Started: Jan 15, 2025</span>
+                            <span class="status-badge active-status">Active</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">Startup Collaboration - DataTech</div>
+                        <div class="project-description">Working with DataTech to implement research findings in commercial applications.</div>
+                        <div class="project-meta">
+                            <span>Started: Mar 3, 2025</span>
+                            <span class="status-badge active-status">Active</span>
+                        </div>
+                    </div>
+                    
+                    <div class="project-item">
+                        <div class="project-title">University Grant Research - AI Ethics</div>
+                        <div class="project-description">Research on ethical implications of AI in decision-making systems.</div>
+                        <div class="project-meta">
+                            <span>Completed: Feb 28, 2025</span>
+                            <span class="status-badge completed-status">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Activity tracking functionality
+        function trackActivity(userId, activityType, description, details = {}) {
+            const timestamp = new Date();
+            const activity = {
+                userId,
+                activityType,
+                description,
+                details,
+                timestamp
+            };
+            
+            // In a real application, this would be sent to a server
+            console.log("Activity tracked:", activity);
+            
+            // Store in localStorage for demonstration purposes
+            const activities = JSON.parse(localStorage.getItem('userActivities') || '[]');
+            activities.unshift(activity);
+            localStorage.setItem('userActivities', JSON.stringify(activities));
+            
+            // You could update the UI here to show the new activity
+            updateActivityFeed(activity);
+        }
+        
+        // Function to update the activity feed in the UI
+        function updateActivityFeed(activity) {
+            // In a real application, this would add the new activity to the UI
+            console.log("Updating activity feed with:", activity);
+        }
+        
+        // Track page view when loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            trackActivity('user123', 'page_view', 'Viewed profile page');
+        });
+        
+        // Track tab changes
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                // Remove active class from all tabs
+                tabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                this.classList.add('active');
+                
+                // Track the tab change
+                trackActivity('user123', 'tab_change', `Switched to ${this.textContent} tab`);
+            });
+        });
+        
+        // Example of tracking other interactions
+        document.querySelector('.notification-bell').addEventListener('click', function() {
+            trackActivity('user123', 'notification_click', 'Checked notifications');
+        });
+        
+        // Track connection clicks
+        const connectionItems = document.querySelectorAll('.connection-item');
+        connectionItems.forEach(item => {
+            item.addEventListener('click', function() {
+                const connectionName = this.querySelector('.connection-name').textContent;
+                trackActivity('user123', 'connection_view', `Viewed connection: ${connectionName}`);
+            });
+        });
+    </script>
+</body>
+</html>
