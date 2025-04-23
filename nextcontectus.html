@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <style>
+        /* Diamond Pattern Background */
+        .diamond-pattern {
+            background: linear-gradient(135deg, #f0f7ff 25%, transparent 25%, transparent 75%, #f0f7ff 75%, #f0f7ff), 
+                        linear-gradient(225deg, #f0f7ff 25%, transparent 25%, transparent 75%, #f0f7ff 75%, #f0f7ff);
+            background-size: 70px 70px;
+            position: relative;
+            overflow: hidden;
+            animation: diamondMove 10s linear infinite;
+            min-height: 100vh; /* Ensure full height */
+        }
+        
+        /* Animation for background */
+        @keyframes diamondMove {
+            0% { background-position: 0 0; }
+            100% { background-position: 70px 70px; }
+        }
+
+        /* Text styles */
+        .thank-you-message {
+            background-color: #ade3f7; /* Light blue background */
+            border-radius: 10px;
+            padding: 40px;
+            text-align: center;
+            max-width: 600px;
+            margin: 50px auto; /* Center the message */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 36px;
+            color: #0b1622;
+        }
+
+        p {
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            color: #555;
+        }
+    </style>
+</head>
+<body class="diamond-pattern">
+    <div class="thank-you-message">
+        <h1>Thank u for your comment!</h1>
+        <p>We will contact with u soon...</p>
+    </div>
+</body>
+</html>
