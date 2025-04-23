@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Startup Research Connection</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy': '#0B1622',
+                        'accent-blue': '#2A9FD6'
+                    },
+                    fontFamily: {
+                        'cursive': ['Dancing Script', 'cursive'],
+                        'sans': ['Poppins', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .circuit-pattern {
+            background-image: radial-gradient(circle at 50% 50%, rgba(42, 159, 214, 0.1) 0%, transparent 50%),
+                            linear-gradient(45deg, rgba(42, 159, 214, 0.05) 25%, transparent 25%),
+                            linear-gradient(-45deg, rgba(42, 159, 214, 0.05) 25%, transparent 25%);
+            background-size: 100% 100%, 20px 20px, 20px 20px;
+            animation: pulse 4s ease-in-out infinite;
+        }
+        .hexagon {
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            transition: all 0.3s ease;
+        }
+        .hexagon:hover {
+            transform: scale(1.1);
+            background-color: rgba(42, 159, 214, 0.4);
+        }
+        @keyframes pulse {
+            0% { background-size: 100% 100%, 20px 20px, 20px 20px; }
+            50% { background-size: 120% 120%, 22px 22px, 22px 22px; }
+            100% { background-size: 100% 100%, 20px 20px, 20px 20px; }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-navy min-h-screen font-sans text-white">
+    <!-- Navigation -->
+    <nav class="bg-navy/90 backdrop-blur-sm fixed w-full z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-8">
+                    <button class="lg:hidden text-white">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                    <a href="how.html" class="text-white hover:text-accent-blue transition">How it works</a>
+                    <a href="home.html" class="text-white hover:text-accent-blue transition">Home</a>
+                </div>
+                <div class="hidden lg:flex items-center space-x-8">
+                    <a href="#" class="text-white hover:text-accent-blue transition">SIGNUP</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">LOGIN</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">ABOUT US</a>
+                    <a href="#" class="text-white hover:text-accent-blue transition">HELP</a>
+                    <a href="community.html" class="text-accent-blue font-bold px-4 py-2 rounded-lg bg-white bg-opacity-20 hover:bg-opacity-40 transition">COMMUNITY</a>
+
+
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="relative min-h-screen overflow-hidden">
+        <div id="heroSection" class="relative min-h-screen flex flex-col items-center justify-center px-4 transition-transform duration-700 ease-in-out">
+            <!-- Decorative Hexagons Left -->
+            <div class="absolute left-0 top-1/4 opacity-20">
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                </div>
+            </div>
+
+            <!-- Decorative Hexagons Right -->
+            <div class="absolute right-0 bottom-1/4 opacity-20">
+                <div class="grid grid-cols-3 gap-2">
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                    <div class="hexagon bg-accent-blue w-16 h-16"></div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="text-center max-w-5xl mx-auto float-animation">
+                <h1 class="font-cursive text-4xl md:text-6xl lg:text-7xl mb-6 leading-tight">
+                    Connecting Startups with Top Researchers—Innovation Starts Here!
+                </h1>
+                <p class="text-lg md:text-xl mb-12 text-gray-300 max-w-3xl mx-auto">
+                    FIND THE RIGHT EXPERTS FOR YOUR STARTUP OR OFFER YOUR KNOWLEDGE TO EMERGING BUSINESSES.
+                </p>
+                <button id="exploreBtn" class="bg-accent-blue hover:bg-blue-600 text-white font-semibold py-3 px-8 rounded-lg transition-all transform hover:scale-105 hover:shadow-lg relative overflow-hidden group">
+                    <span class="absolute inset-0 bg-white/30 transform -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-500"></span>
+                    Explore Content!
+                </button>
+            </div>
+        </div>
+        <div id="contentSection" class="absolute top-full left-0 w-full min-h-screen bg-navy px-4 py-24 grid grid-cols-1 md:grid-cols-2 gap-8 transition-transform duration-700 ease-in-out">
+            <a href="https://example.com/startup" class="relative group overflow-hidden rounded-lg shadow-lg flex flex-col justify-center pt-12">
+                <img src="Screenshot 2025-04-22 154953.png" alt="Startup" class="max-w-[400px] w-full h-auto mx-auto transform transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-white text-3xl font-semibold mb-2">Startup</h3>
+                    <p class="text-white text-lg">Explore startup resources and connections</p>
+                    <a href="startuphub.html" class="text-white hover:text-accent-blue transition">STARTUPHUB</a>
+
+                </div>
+            </a>
+            <a href="https://example.com/researcher" class="relative group overflow-hidden rounded-lg shadow-lg flex flex-col justify-center pt-12">
+                <img src="Screenshot 2025-04-22 155127.png" alt="Researcher" class="max-w-[400px] w-full h-auto mx-auto transform transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-white text-3xl font-semibold mb-2">Researcher</h3>
+                    <p class="text-white text-lg">Discover research opportunities and collaborations</p>
+                </div>
+            </a>
+        </div>
+
+        <section id="contentSection" class="hidden mt-12 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 px-4">
+            <a href="https://example.com/startup" class="relative group overflow-hidden rounded-lg shadow-lg">
+                <img src="https://via.placeholder.com/400x267?text=Startup" alt="Startup" class="w-full h-auto max-w-[400px] mx-auto transform transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-white text-3xl font-semibold mb-2">Startup</h3>
+                    <p class="text-white text-lg">Explore startup resources and connections</p>
+                </div>
+            </a>
+            <a href="https://example.com/researcher" class="relative group overflow-hidden rounded-lg shadow-lg">
+                <img src="https://via.placeholder.com/400x267?text=Researcher" alt="Researcher" class="w-full h-auto max-w-[400px] mx-auto transform transition-transform duration-500 group-hover:scale-105">
+                <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <h3 class="text-white text-3xl font-semibold mb-2">Researcher</h3>
+                    <p class="text-white text-lg">Discover research opportunities and collaborations</p>
+                </div>
+            </a>
+        </section>
+
+        <script>
+            const heroSection = document.getElementById('heroSection');
+            const contentSection = document.getElementById('contentSection');
+            document.getElementById('exploreBtn').addEventListener('click', function() {
+                heroSection.style.transform = 'translateY(-100vh)';
+                contentSection.style.transform = 'translateY(-100vh)';
+            });
+        </script>
+
+        <!-- Circuit Board Animation -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="w-full h-full" style="background: radial-gradient(circle at center, rgba(42, 159, 214, 0.1) 0%, transparent 70%)"></div>
+        </div>
+    </main>
+</body>
+</html>
